@@ -1,10 +1,21 @@
 package junit5tests;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @DisplayName("First class for test")
 public class FirstTest {
+
+
+    @BeforeAll
+    public void beforeAllTests(){
+        System.out.println("Before all the tests");
+    }
+
+    @BeforeEach
+    public void beforeEachTest(){
+        System.out.println("Before each test");
+    }
 
     @Test
     @DisplayName("First method test")
@@ -16,5 +27,15 @@ public class FirstTest {
     @DisplayName("Second method test")
     public void secondTest(){
         System.out.println("hello from second method");
+    }
+
+    @AfterAll
+    public void afterAllTests(){
+        System.out.println("After all the tests");
+    }
+
+    @AfterEach
+    public void afterEachTest(){
+        System.out.println("After each test");
     }
 }
