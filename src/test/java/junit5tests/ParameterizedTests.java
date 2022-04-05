@@ -1,10 +1,10 @@
 package junit5tests;
 
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.EmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class ParameterizedTests {
 
@@ -37,5 +37,15 @@ public class ParameterizedTests {
     void csvSource_String_String_FromFile(String name, double price, int quantity, String uom, String provider){
         System.out.println("name = " + name + " , price = " + price + " , quantity = " + quantity
                 + " , uom = " + uom + " , provider = " + provider);
+    }
+
+    @ParameterizedTest
+    @MethodSource(value="generateListOfString")
+    void method_source_string(String input1){
+        System.out.println("Input 1 "+input1);
+    }
+
+    static List<String> generateListOfString(){
+        return Arrays.asList("tomato","carrot","cabbage");
     }
 }
